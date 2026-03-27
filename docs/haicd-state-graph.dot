@@ -1,0 +1,109 @@
+digraph HAICD_States {
+    // HAICD 18 种有意义状态关系图谱
+    // 基于理论 02：智能体的 18 种情境动力演化
+    
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", fontname="Arial"];
+    edge [fontname="Arial", fontsize=10];
+    
+    // 图例说明
+    labelloc="t";
+    label="HAICD 状态关系图谱 (18 种有意义状态)\n基于 ABCD 维度：A 出发点、B 过程、C 资源、D 结论\n绿色=积极输出 | 黄色=中性输出 | 红色=需谨慎";
+    
+    // ==================== 第一层：理想状态 ====================
+    subgraph cluster_ideal {
+        label="理想状态 (全维度优秀)";
+        style=filled;
+        color=lightgreen;
+        
+        S1 [label="1. 顺应\nA++ B++ C++ D++\n完全匹配且超出预期", fillcolor="green", fontcolor="white"];
+    }
+    
+    // ==================== 第二层：积极输出型 (M=1, I=1) ====================
+    subgraph cluster_positive {
+        label="积极输出型 (主动 + 启发性)";
+        style=filled;
+        color=lightyellow;
+        
+        S3 [label="3. 高风险创新\nA 不真实 B++ C+ D 启发\n理想主义输出", fillcolor="yellow"];
+        S7 [label="7. 未来导向型输出\nA+ B++ C++ D 启发\n现实不足但启发性强", fillcolor="yellow"];
+        S10 [label="10. 创新性错误\nA+ B 缺陷 C++ D 启发\n缺陷激发创新", fillcolor="yellow"];
+        S12 [label="12. 资源受限下的灵感激发\nA+ B+ C 不足 D 启发\n约束中出灵感", fillcolor="yellow"];
+        S13 [label="13. 探索性思考\nA+ B 不严密 C++ D 启发\n激发新思路", fillcolor="yellow"];
+        S17 [label="17. 潜在价值发现\nA 真实 B 简单 C+ D 启发\n简单中发现价值", fillcolor="yellow"];
+        S18 [label="18. 概念探索\nA 不真实 B 简单 C+ D 启发\n激发新概念", fillcolor="yellow"];
+    }
+    
+    // ==================== 第三层：现实型输出 (R=1, I=0) ====================
+    subgraph cluster_realistic {
+        label="现实型输出 (真实但无启发)";
+        style=filled;
+        color=lightblue;
+        
+        S4 [label="4. 误导型协作\nA+ B 错误 C+ D 现实\n过程错但结果可用", fillcolor="lightblue"];
+        S8 [label="8. 流程混乱但输出有效\nA+ B 错误 C++ D 现实\n推理错但结果对", fillcolor="lightblue"];
+        S9 [label="9. 资源受限下的保守输出\nA+ B++ C 不足 D 现实\n安全但普通", fillcolor="lightblue"];
+        S11 [label="11. 理想主义误导\nA 虚假 B++ C++ D 现实\n虚假前提严谨过程", fillcolor="lightblue"];
+        S14 [label="14. 保守型推理\nA 真实 B+ C++ D 现实\n稳定无新颖", fillcolor="lightblue"];
+        S15 [label="15. 实践验证型\nA+ B 缺陷 C++ D 现实有用\n实用主义", fillcolor="lightblue"];
+        S16 [label="16. 经验驱动型\nA 真实 B+ C++ D 现实\n经验驱动决策", fillcolor="lightblue"];
+    }
+    
+    // ==================== 第四层：被动响应型 (M=0, I=0) ====================
+    subgraph cluster_passive {
+        label="被动响应型 (被动 + 无启发)";
+        style=filled;
+        color=lightpink;
+        
+        S2 [label="2. 谄媚\nA 不灵活 B+ C 不足 D 无启发\n机械式迎合", fillcolor="pink"];
+        S5 [label="5. 幻觉\nA 虚假 B 错 C 不足 D 启发\n虚构前提有启发", fillcolor="pink"];
+        S6 [label="6. 被动服从\nA 真实 B 错 C+ D 无启发\n响应式低质量", fillcolor="pink"];
+    }
+    
+    // ==================== 状态迁移关系 ====================
+    // 从理想状态到积极输出
+    S1 -> S3 [label="创新需求触发"];
+    S1 -> S7 [label="前沿探索"];
+    
+    // 积极输出内部迁移
+    S3 -> S10 [label="过程发现缺陷"];
+    S3 -> S12 [label="资源受限"];
+    S7 -> S13 [label="深化探索"];
+    S13 -> S18 [label="概念抽象"];
+    S12 -> S17 [label="简化发现"];
+    
+    // 积极到现实型
+    S3 -> S11 [label="前提被证伪"];
+    S10 -> S4 [label="错误被识别"];
+    S13 -> S8 [label="推理被简化"];
+    
+    // 现实型内部迁移
+    S4 -> S8 [label="过程更混乱"];
+    S9 -> S14 [label="资源恢复"];
+    S11 -> S16 [label="经验修正"];
+    S15 -> S16 [label="形成惯例"];
+    
+    // 现实型到被动型
+    S8 -> S6 [label="质量下降"];
+    S14 -> S2 [label="迎合倾向"];
+    S4 -> S5 [label="前提虚构"];
+    
+    // 被动型内部
+    S2 -> S6 [label="失去迎合能力"];
+    S5 -> S6 [label="启发性丧失"];
+    
+    // 恢复路径（通过人工干预/资源补充）
+    S6 -> S14 [label="人工校正", style=dashed, color=gray];
+    S2 -> S1 [label="重建信任", style=dashed, color=gray];
+    S5 -> S18 [label="转为思想实验", style=dashed, color=gray];
+    
+    // ==================== 维度图例 ====================
+    subgraph cluster_legend {
+        label="ABCD 维度说明";
+        style=filled;
+        color=lightgray;
+        
+        legend [label="A: 出发点 (灵活度 + 真实性)\nB: 过程 (逻辑自洽 + 正确性)\nC: 资源 (可及性 + 稳定性)\nD: 结论 (现实性 + 启发性)\n\n++ = 优秀 | + = 良好 | 缺陷 = 有问题 | 不足 = 受限", 
+                shape=note, fillcolor="white"];
+    }
+}
