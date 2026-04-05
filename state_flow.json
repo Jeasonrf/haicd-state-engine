@@ -1,0 +1,25 @@
+{
+  "sessions": {
+    "test-session-001": {
+      "created": "2026-04-06T02:59:11.798277",
+      "states": [
+        {
+          "state": "顺应",
+          "timestamp": "2026-04-06T02:59:11.798277",
+          "context": {
+            "scenario": "academic_research"
+          }
+        },
+        {
+          "state": "高风险创新",
+          "timestamp": "2026-04-06T02:59:11.798841",
+          "context": {
+            "scenario": "innovation"
+          }
+        }
+      ],
+      "current_state": "高风险创新",
+      "last_updated": "2026-04-06T02:59:11.798841"
+    }
+  }
+}

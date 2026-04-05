@@ -28,9 +28,9 @@ default:
 
 scenarios:
   # --- 医学科研场景 ---
-  medical_research:
+  academic_research:
     description: "医学科研工作 - 研究假设生成阶段"
-    user_role: "医学科研工作者"
+    user_role: "科研工作者"
     scenario_type: "innovation"
     task_phase: "hypothesis"
     risk_level: "high"
@@ -53,9 +53,9 @@ scenarios:
     notes: "科研探索需要启发性，但医学领域风险敏感，需标注不确定性"
 
   # --- 医学软件场景 ---
-  medical_software:
+  software_engineering:
     description: "医学软件开发 - 合规性设计"
-    user_role: "医学软件专家"
+    user_role: "软件工程专家"
     scenario_type: "routine"
     task_phase: "implementation"
     risk_level: "high"
@@ -79,9 +79,9 @@ scenarios:
     notes: "软件合规性要求准确性优先，避免创新性输出"
 
   # --- 医学教学场景 ---
-  medical_teaching:
+  academic_teaching:
     description: "医学院校教学 - 案例设计"
-    user_role: "医学院校老师"
+    user_role: "高校教师"
     scenario_type: "teaching"
     task_phase: "design"
     risk_level: "medium"
@@ -173,25 +173,25 @@ scenarios:
 user_roles:
   researcher:
     description: "科研工作者"
-    default_scenario: "medical_research"
+    default_scenario: "academic_research"
     innovation_tolerance: "high"
     accuracy_requirement: "high"
   
   engineer:
     description: "工程师/开发者"
-    default_scenario: "medical_software"
+    default_scenario: "software_engineering"
     innovation_tolerance: "low"
     accuracy_requirement: "very_high"
   
   teacher:
     description: "教师/教育者"
-    default_scenario: "medical_teaching"
+    default_scenario: "academic_teaching"
     innovation_tolerance: "medium"
     accuracy_requirement: "medium"
   
   student:
     description: "学生/学习者"
-    default_scenario: "medical_teaching"
+    default_scenario: "academic_teaching"
     innovation_tolerance: "medium"
     accuracy_requirement: "high"
   

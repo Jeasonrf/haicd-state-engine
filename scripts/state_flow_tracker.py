@@ -142,7 +142,7 @@ if __name__ == "__main__":
     tracker = StateFlowTracker("test-session-001")
     
     # 记录状态
-    tracker.record_state("顺应", {"scenario": "medical_research"})
+    tracker.record_state("顺应", {"scenario": "academic_research"})
     tracker.record_state("高风险创新", {"scenario": "innovation"})
     
     # 获取当前状态

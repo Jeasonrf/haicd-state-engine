@@ -42,12 +42,12 @@ from haicd_engine import HAICDEngine
 # 创建引擎
 engine = HAICDEngine(
     session_id="my-session-001",
-    scenario="medical_research"
+    scenario="academic_research"
 )
 
 # 选择最优状态（结合历史）
 context = {
-    'user_role': '医学科研工作者',
+    'user_role': '科研工作者',
     'scenario': 'innovation',
     'risk_level': 'high'
 }
@@ -69,7 +69,7 @@ from haicd_engine import select_best_state, track_state
 state_name, score = select_best_state(
     session_id="session-001",
     context={'scenario': 'innovation'},
-    scenario='medical_research'
+    scenario='academic_research'
 )
 
 # 跟踪状态
@@ -86,12 +86,12 @@ report = track_state(
 from haicd_scoring_system import MeaningEvaluator, StateSelector, get_scenario_config
 
 # 加载场景配置
-config = get_scenario_config('medical_research')
+config = get_scenario_config('academic_research')
 evaluator = MeaningEvaluator(config.get('weights'))
 selector = StateSelector(evaluator)
 
 # 选择状态
-context = {'user_role': '医学科研工作者', 'scenario': 'innovation'}
+context = {'user_role': '科研工作者', 'scenario': 'innovation'}
 recommendations = selector.select(context, top_k=3)
 ```
 
@@ -104,7 +104,7 @@ from state_flow_tracker import StateFlowTracker
 tracker = StateFlowTracker("session-001")
 
 # 记录状态
-tracker.record_state("顺应", {'scenario': 'medical_research'})
+tracker.record_state("顺应", {'scenario': 'academic_research'})
 
 # 获取历史
 history = tracker.get_state_history(limit=10)
@@ -173,7 +173,7 @@ anomalies = tracker.detect_anomalies()
         {
           "state": "顺应",
           "timestamp": "2026-03-27T06:00:00",
-          "context": {"scenario": "medical_research"}
+          "context": {"scenario": "academic_research"}
         }
       ]
     }

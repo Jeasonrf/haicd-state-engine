@@ -495,13 +495,13 @@ def main():
     # 创建引擎
     engine = HAICDEngine(
         session_id="demo-session-001",
-        scenario="medical_research"
+        scenario="academic_research"
     )
     
     # 演示 1：选择状态（结合历史）
     print("\n【演示 1】选择最优状态（结合历史状态流）")
     context = {
-        'user_role': '医学科研工作者',
+        'user_role': '科研工作者',
         'scenario': 'innovation',
         'risk_level': 'high'
     }

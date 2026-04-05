@@ -276,8 +276,8 @@ class StateSelector:
 def get_scenario_config(scenario_name: str) -> Dict:
     """获取场景配置"""
     configs = {
-        'medical_research': {
-            'user_role': '医学科研工作者',
+        'academic_research': {
+            'user_role': '科研工作者',
             'scenario': 'innovation',
             'task_phase': 'hypothesis',
             'risk_level': 'high',
@@ -288,8 +288,8 @@ def get_scenario_config(scenario_name: str) -> Dict:
                 'ethical_compliance': 0.1
             }
         },
-        'medical_software': {
-            'user_role': '医学软件专家',
+        'software_engineering': {
+            'user_role': '软件工程专家',
             'scenario': 'routine',
             'task_phase': 'implementation',
             'risk_level': 'high',
@@ -300,8 +300,8 @@ def get_scenario_config(scenario_name: str) -> Dict:
                 'ethical_compliance': 0.1
             }
         },
-        'medical_teaching': {
-            'user_role': '医学院校老师',
+        'academic_teaching': {
+            'user_role': '高校教师',
             'scenario': 'teaching',
             'task_phase': 'design',
             'risk_level': 'medium',
@@ -343,7 +343,7 @@ def main():
     print("=" * 60)
     
     # 场景测试
-    scenarios = ['medical_research', 'medical_software', 'medical_teaching', 'thought_experiment']
+    scenarios = ['academic_research', 'software_engineering', 'academic_teaching', 'thought_experiment']
     
     for scenario_name in scenarios:
         print(f"\n{'='*60}")
